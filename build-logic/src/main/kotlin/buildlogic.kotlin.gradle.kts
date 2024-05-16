@@ -9,7 +9,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
 plugins {
-    id("buildlogic.jvm")
+    id("buildlogic.java")
     id("org.jetbrains.kotlin.jvm")
 }
 
@@ -21,7 +21,6 @@ repositories {
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useJUnitJupiter(catalog.version("junit-jupiter").preferredVersion)
             dependencies {
                 implementation(catalog.lib("io-kotest-runner-junit5"))
                 implementation(catalog.lib("io-kotest-assertions-core"))
@@ -47,7 +46,7 @@ tasks.withType<KotlinCompile>().configureEach {
 
 val initKotestDefaults by tasks.registering {
     group = "help"
-    description = "Creates a kotest.properties, (if not exists), with defaults for a project"
+    description = "Creates a kotest.properties, (if not exists), with defaults for a Kotlin project."
     val kotestPropsFile = project.layout.projectDirectory.file("src/test/resources/kotest.properties")
     onlyIf { !kotestPropsFile.asFile.exists() }
     doLast {

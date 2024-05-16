@@ -34,6 +34,7 @@ tasks.withType<Test>() {
         }
     }
 }
+// useJUnitJupiter(catalog.version("junit-jupiter").preferredVersion)
 
 testing {
     suites {
