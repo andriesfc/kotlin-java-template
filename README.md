@@ -18,8 +18,12 @@
 
 ## What is in it?
 
-A list of build logic to remove the tedium of configuring some common libraries and kotlin plugins every time
-you want to use a multi-project build.
+A collection of Gradle build logic scripts to elevate the tedium of configuring 
+Kotlin (and Java) for a multi-project build.
+This setup also includes:
+
+- Setting up JUnit5 based on a version configures in the `libs.versions.toml` file.
+- Setting up Kotest for Kotlin projects.
 
 In addition, it also includes only two template projects with the absolute minimum dependencies:
 
