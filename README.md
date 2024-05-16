@@ -2,16 +2,15 @@
 
 > **TL;DR**
 > 
-> A collection of `build-logic` scripts which configures multi project build for java/kotlin.
+> A collection of build logic scripts which configures multi java/kotlin project builds.
 
 ## How to use it
 
-1. Copy this project.
-2. Rename the project name to your project.
-3. Rename the value of the root project's name to match your project name.
-4. Apply one of the build logic plugins to your new project.
-5. Delete sample projects if you do not need then.
-6. Lastly, feel to replace this readme with your own project's readme.
+1. Create a new project on GitHub choosing this project as template.
+2. Rename the value of the root project's name to match your project name.
+3. Apply one of the build logic plugins to your new project.
+4. Delete sample projects if you do not need then.
+5. Lastly, feel to replace this readme with your own project's readme.
 
 > **IMPORTANT:**
 >
@@ -34,7 +33,7 @@ This template project drives your multi-project build via the following build lo
 
 | Build Logic Script                                                                            | Purpose                                                                                                    |
 |-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
-| [`buildlogic.java`](build-logic/src/main/kotlin/buildlogic.java.gradle.kts)                     | Sets up maven repos, java tool chain, JUnit5 based on version specified in the `libs.versions.toml` file.  |
+| [`buildlogic.java`](build-logic/src/main/kotlin/buildlogic.java.gradle.kts)                   | Sets up maven repos, java tool chain, JUnit5 based on version specified in the `libs.versions.toml` file.  |
 | [`buildlogic.kotlin`](build-logic/src/main/kotlin/buildlogic.kotlin.gradle.kts)               | Sets up kotlin compiler, and add the kotest dependencies to the test suit.                                 |
 | [`buildlogic.projectroot`](build-logic/src/main/kotlin/buildlogic.projectroot.gradle.kts)     | Applied to root project to ensure that all modules have the same version and group info.                   |
 | [`buildlogic.kotlin.cliapp`](build-logic/src/main/kotlin/buildlogic.kotlin.cliapp.gradle.kts) | Applies the `buildlogic.kotlin` application, followed by the application plugin with some JDK 21 defaults. |
@@ -43,6 +42,6 @@ Included are also low-level functions which allow the build scripts plugins
 to access the `libs.versions.toml` file for dependencies.
 This means that version information only needs to be changed in one place.
 
-There is also one task which will generate a `kotest.properties` into your kotlin projects resource folder with some defaults.
+There is also a task which generates a `kotest.properties` into your kotlin projects resource folder with some defaults.
 Note that this task will only fire if there is no `kotest.properties` present.
 

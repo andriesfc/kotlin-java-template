@@ -1,12 +1,10 @@
 @file:Suppress("UnstableApiUsage")
 
 import buildlogic.catalog
-import buildlogic.lib
-import buildlogic.version
 import buildlogic.ensureParents
+import buildlogic.lib
 import org.gradle.kotlin.dsl.support.useToRun
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 
 plugins {
     id("buildlogic.java")
@@ -16,7 +14,6 @@ plugins {
 repositories {
     mavenCentral()
 }
-
 
 testing {
     suites {
@@ -45,7 +42,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 val initKotestDefaults by tasks.registering {
-    group = "help"
+    group = "project"
     description = "Creates a kotest.properties, (if not exists), with defaults for a Kotlin project."
     val kotestPropsFile = project.layout.projectDirectory.file("src/test/resources/kotest.properties")
     onlyIf { !kotestPropsFile.asFile.exists() }
