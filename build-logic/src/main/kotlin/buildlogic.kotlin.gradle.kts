@@ -1,10 +1,9 @@
 @file:Suppress("UnstableApiUsage")
 
 import buildlogic.catalog
-import buildlogic.ensureParents
 import buildlogic.lib
-import org.gradle.kotlin.dsl.support.useToRun
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.util.Properties
 
 plugins {
     id("buildlogic.java")
@@ -43,14 +42,23 @@ tasks.withType<KotlinCompile>().configureEach {
 
 val initKotestDefaults by tasks.registering {
     group = "project"
-    description = "Creates a kotest.properties, (if not exists), with defaults for a Kotlin project."
+    description =
+        "Initializes either a new kotest.properties file, or updated it with defaults if it exists but not using the defaults."
     val kotestPropsFile = project.layout.projectDirectory.file("src/test/resources/kotest.properties")
-    onlyIf { !kotestPropsFile.asFile.exists() }
+    val defaultKoTestProps = listOf(
+        "kotest.framework.classpath.scanning.config.disable" to "true",
+        "kotest.framework.classpath.scanning.autoscan.disables" to "true",
+    )
     doLast {
-        kotestPropsFile.asFile.ensureParents().printWriter().useToRun {
-            println("kotest.framework.classpath.scanning.config.disable=true")
-            println("kotest.framework.classpath.scanning.autoscan.disable=true")
+        val props = Properties()
+        kotestPropsFile.asFile.takeIf { it.exists() }?.reader()?.use { props.load(it) }
+        val modified = defaultKoTestProps.fold(false) { updated, (property, value) ->
+            val updating = property !in props
+            if (updating) props[property] = value
+            updated || updating
         }
+        kotestPropsFile.takeIf { modified }
+            ?.asFile?.writer()?.use { props.store(it, "updated defaults via init task") }
     }
 }
 
