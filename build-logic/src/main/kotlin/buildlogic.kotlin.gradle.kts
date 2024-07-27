@@ -61,9 +61,12 @@ val setKotestDefaults by tasks.registering {
             updated || updating
         }
 
-        val file = propsFile.takeIf { modified }?.asFile?.ensureParents() ?: return@doLast
+        if (modified) propsFile
+            .asFile
+            .ensureParents()
+            .outputStream()
+            .useToRun { props.store(this, null) }
 
-        file.outputStream().useToRun { props.store(this, "Updated Kotest via task: ${this@doLast.name}") }
     }
 }
 
