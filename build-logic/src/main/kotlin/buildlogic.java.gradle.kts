@@ -25,6 +25,7 @@ tasks.withType<JavaCompile>() {
 }
 
 tasks.withType<Test>() {
+    // todo: This should suppress message on JDK 21, but is not!
     val jvmArgs = buildlogic.java21JvmDefaults + "-XX:+EnableDynamicAgentLoading"
     useJUnitPlatform {
         dependencies {

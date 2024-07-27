@@ -1,5 +1,5 @@
 plugins {
-    id("buildlogic.kotlin.cliapp")
+    id("buildlogic.kotlin.app")
 }
 
 

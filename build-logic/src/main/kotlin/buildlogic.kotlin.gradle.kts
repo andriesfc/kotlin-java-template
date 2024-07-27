@@ -1,7 +1,9 @@
 @file:Suppress("UnstableApiUsage")
 
 import buildlogic.catalog
+import buildlogic.ensureParents
 import buildlogic.lib
+import org.gradle.kotlin.dsl.support.useToRun
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.Properties
 
@@ -40,25 +42,28 @@ tasks.withType<KotlinCompile>().configureEach {
     }
 }
 
-val initKotestDefaults by tasks.registering {
+val setKotestDefaults by tasks.registering {
     group = "project"
     description =
         "Initializes either a new kotest.properties file, or updated it with defaults if it exists but not using the defaults."
-    val kotestPropsFile = project.layout.projectDirectory.file("src/test/resources/kotest.properties")
-    val defaultKoTestProps = listOf(
+    val propsFile = project.layout.projectDirectory.file("src/test/resources/kotest.properties")
+    val defaultProps = listOf(
         "kotest.framework.classpath.scanning.config.disable" to "true",
-        "kotest.framework.classpath.scanning.autoscan.disables" to "true",
+        "kotest.framework.classpath.scanning.autoscan.disable" to "true",
     )
     doLast {
         val props = Properties()
-        kotestPropsFile.asFile.takeIf { it.exists() }?.reader()?.use { props.load(it) }
-        val modified = defaultKoTestProps.fold(false) { updated, (property, value) ->
-            val updating = property !in props
-            if (updating) props[property] = value
+        propsFile.asFile.takeIf { it.exists() }?.reader()?.use { props.load(it) }
+
+        val modified = defaultProps.fold(false) { updated, (defaultProperty, defaultValue) ->
+            val updating = props[defaultProperty] == null
+            if (updating) props[defaultProperty] = defaultValue
             updated || updating
         }
-        kotestPropsFile.takeIf { modified }
-            ?.asFile?.writer()?.use { props.store(it, "updated defaults via init task") }
+
+        val file = propsFile.takeIf { modified }?.asFile?.ensureParents() ?: return@doLast
+
+        file.outputStream().useToRun { props.store(this, "Updated Kotest via task: ${this@doLast.name}") }
     }
 }
 

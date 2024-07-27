@@ -35,12 +35,12 @@ If you only want to keep the `app` project, remember to remove the dependency on
 
 This template project drives your multi-project build via the following build logic plugins:
 
-| Build Logic Script                                                                            | Purpose                                                                                                    |
-|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
-| [`buildlogic.java`](build-logic/src/main/kotlin/buildlogic.java.gradle.kts)                   | Sets up maven repos, java tool chain, JUnit5 based on version specified in the `libs.versions.toml` file.  |
-| [`buildlogic.kotlin`](build-logic/src/main/kotlin/buildlogic.kotlin.gradle.kts)               | Sets up kotlin compiler, and add the kotest dependencies to the test suit.                                 |
-| [`buildlogic.projectroot`](build-logic/src/main/kotlin/buildlogic.projectroot.gradle.kts)     | Applied to root project to ensure that all modules have the same version and group info.                   |
-| [`buildlogic.kotlin.cliapp`](build-logic/src/main/kotlin/buildlogic.kotlin.cliapp.gradle.kts) | Applies the `buildlogic.kotlin` application, followed by the application plugin with some JDK 21 defaults. |
+| Build Logic Script                                                                        | Purpose                                                                                                    |
+|-------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| [`buildlogic.java`](build-logic/src/main/kotlin/buildlogic.java.gradle.kts)               | Sets up maven repos, java tool chain, JUnit5 based on version specified in the `libs.versions.toml` file.  |
+| [`buildlogic.kotlin`](build-logic/src/main/kotlin/buildlogic.kotlin.gradle.kts)           | Sets up kotlin compiler, and add the kotest dependencies to the test suit.                                 |
+| [`buildlogic.projectroot`](build-logic/src/main/kotlin/buildlogic.projectroot.gradle.kts) | Applied to root project to ensure that all modules have the same version and group info.                   |
+| [`buildlogic.kotlin.app`](build-logic/src/main/kotlin/buildlogic.kotlin.app.gradle.kts)   | Applies the `buildlogic.kotlin` application, followed by the application plugin with some JDK 21 defaults. |
 
 Included are also low-level functions which allow the build scripts plugins
 to access the `libs.versions.toml` file for dependencies.
