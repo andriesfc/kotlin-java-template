@@ -1,7 +1,7 @@
 [versions]
 io-kotest = "5.9.0"
 junit-jupiter = "5.10.2"
-kotlin = "2.0.0"
+kotlin = "2.0.10"
 org-jetbrains-annotations = "24.0.1"
 org-mockito-mockito-core = "4.11.0"
 org-slf4j = "1.7.36"
