@@ -14,7 +14,7 @@
    1. Find the statement: `rootProject.name = "kotlin-java-template"`
    2. Replace the value of `kotlin-java-template` with the name of the new project.
     
-   > **IMPORTANT**: Remember to use double quotes.
+   **IMPORTANT**: Remember to use double quotes.
    
 4. Save the file, and closed it.
 5. Reload the project from the Gradle view.
