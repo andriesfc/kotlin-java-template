@@ -45,10 +45,10 @@
 
 A collection of Gradle build logic scripts to elevate the tedium of configuring 
 Kotlin (and Java) for a multi-project build.
-This setup also includes:
+This setup also includes two testing frameworks, one for Java and another for Kotlin:
 
-- Setting up [JUnit5](https://junit.org/junit5/) based on a version configures in the `libs.versions.toml` file.
-- Setting up [Kotest](https://kotest.io/) for Kotlin projects.
+- **Java**: [JUnit5](https://junit.org/junit5/) based on a version configures in the `libs.versions.toml` file.
+- **Kotlin**: [Kotest](https://kotest.io/) for Kotlin projects.
 
 In addition, it also includes only two template projects with the absolute minimum dependencies:
 
