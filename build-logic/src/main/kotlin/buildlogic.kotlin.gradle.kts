@@ -10,6 +10,7 @@ import java.util.Properties
 plugins {
     id("buildlogic.java")
     id("org.jetbrains.kotlin.jvm")
+    id("buildlogic.dokkatoo")
 }
 
 repositories {

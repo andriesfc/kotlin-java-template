@@ -9,5 +9,6 @@ repositories {
 
 dependencies {
     implementation(libs.kotlin.gradle.plugin)
+    implementation(libs.dokkatoo.plugin)
     implementation(libs.simver4j)
 }
