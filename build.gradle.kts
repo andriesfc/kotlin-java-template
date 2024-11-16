@@ -11,7 +11,6 @@ subprojects {
     version = rootProject.version
 }
 
-
 dependencies {
     dokkatoo(project(":app"))
     dokkatoo(project(":commons"))

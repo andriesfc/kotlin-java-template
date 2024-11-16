@@ -11,6 +11,7 @@ dokkatoo = "2.4.0"
 
 [libraries]
 io-kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "io-kotest" }
+io-kotest-framework-api = { module = "io.kotest:kotest-framework-api", version.ref = "io-kotest" }
 io-kotest-framework-datatest = { module = "io.kotest:kotest-framework-datatest", version.ref = "io-kotest" }
 io-kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "io-kotest" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
