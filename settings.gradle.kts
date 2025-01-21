@@ -2,4 +2,4 @@ pluginManagement {
     includeBuild("build-logic")
 }
 
-rootProject.name = "kotlin-java-template"
+rootProject.name = "please-change-me"
