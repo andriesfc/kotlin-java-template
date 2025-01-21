@@ -3,6 +3,3 @@ pluginManagement {
 }
 
 rootProject.name = "kotlin-java-template"
-
-include(":app")
-include(":commons")
