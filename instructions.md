@@ -12,7 +12,7 @@
    include(":my-shared-lib")
    ```
 4. Create each module, and provide a `build.gradle.kts` file in the root of the module.
-5. Edit each file and apply any of the custom build plugins, as found in the [build-logic](build-logic) folder:
+5. Edit each `build.gradle.kts` file and apply any of the custom build plugins, as found in the [build-logic](build-logic) folder:
 
    | Plugin Apply                                                                              | Description                                                                                              |
    |-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
