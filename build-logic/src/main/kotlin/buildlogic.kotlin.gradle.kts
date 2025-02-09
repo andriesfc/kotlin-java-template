@@ -11,7 +11,6 @@ import java.util.Properties
 plugins {
     id("buildlogic.java")
     id("org.jetbrains.kotlin.jvm")
-    id("buildlogic.dokkatoo")
 }
 
 repositories {
@@ -25,6 +24,7 @@ testing {
                 implementation(catalog.lib("kotest-runner-junit5"))
                 implementation(catalog.lib("kotest-assertions-core"))
                 implementation(catalog.lib("kotest-framework-datatest"))
+                implementation(catalog.lib("kotlin-reflect"))
             }
         }
     }

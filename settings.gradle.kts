@@ -2,4 +2,9 @@ pluginManagement {
     includeBuild("build-logic")
 }
 
-rootProject.name = "please-change-me"
+val projectName: String by settings
+
+rootProject.name = projectName
+
+
+
