@@ -1,7 +1,6 @@
 
 rootProject.name = "build-logic"
 
-
 pluginManagement {
     repositories {
         mavenLocal()
@@ -19,4 +18,3 @@ dependencyResolutionManagement {
         create("libs") { from(files("../gradle/libs.versions.toml")) }
     }
 }
-
